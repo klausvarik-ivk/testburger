@@ -19,7 +19,7 @@
     <h3> L-P 10-22</h3>
       </div>
     </div>
-  </div 
+  </div> 
 </template>
 
 <script>
