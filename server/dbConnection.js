@@ -13,6 +13,7 @@ const ServSchema = new Schema({
   price: { type: Number },
   stock: { type: Number },
   img: { type: String },
+  featured: { type: Boolean},
 });
 
 const Serv = mongoose.model("Kaburger-BE", ServSchema);
