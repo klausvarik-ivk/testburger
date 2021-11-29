@@ -1,10 +1,6 @@
 header {
   background: white;
-  color: black;
   padding-top: 1px;
   min-height: 5px;
-  border-bottom: black 3px solid;
-}
-section {
   border-bottom: black 3px solid;
 }
