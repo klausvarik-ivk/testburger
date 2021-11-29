@@ -9,34 +9,28 @@ router.get("/get-burgers", async function (request, response) {
 });
 
 
-// request === req ja response === res
-/* router.get("/get-todos", async function (request, response) {
-  const result = await Todos.find();
-  console.log(result);
-  response.send(result);
-});
-
-router.get("/delete-todo/:id", async function (request, response) {
-  await Todos.deleteOne({ _id: request.params.id });
-  console.log("Delete todo..");
+router.get("/delete-burgers/:id", async function (request, response) {
+  await Serv.deleteOne({ _id: request.params.id });
+  console.log("Delete burger..");
   response.send({});
 });
 
-router.get("/get-todo/:id", async function (request, response) {
-  const result = await Todos.findOne({ _id: request.params.id });
+router.get("/get-burger/:id", async function (request, response) {
+  const result = await Serv.findOne({ _id: request.params.id });
   console.log(result);
   response.send(result);
 });
 
-router.post("/update-todo/:id", async function (request, response){
-  await Todos.updateOne(
+router.patch("/update-burger/:id", async function (request, response){
+  await Serv.updateOne(
     { _id: request.params.id },
+    // Muutimise koht siin!
     { $set: { status: request.body.status } }
   );
-  console.log("updating todo..");
+  console.log("updating burger..");
   response.send({});
 });
-*/
+
 router.post("/add-burgers", async function (request, response) {
   console.log(request.body);
     if (request.body.title) {
