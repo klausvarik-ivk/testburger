@@ -1,18 +1,16 @@
 <template>
+<body>
   <div class="container">
-    <div class="row">
+    <div class="row menu">
       <Navbar />
     </div>
-    <h1 class="text-center"><img src="../../img/ka-burx.jpg" alt="logo" /></h1>
-
-    <from id="newsletter">
-      <div class="container">
-        <h2 class="text-center"><img src="../../img/sale.jpg" alt="logo" /></h2>
-      </div>
-    </from>
-    <div class="container">
-      <div class="row">
-        <div class="col">
+    <div class="row">
+    <img class="banner" src="../../img/ka-burx.jpg" alt="logo" />
+    </div>
+      <div class="row deals">
+        <h1 class="font-weight-bold">Selle nädala pakkumised!</h1>
+        <span class="mb-4"></span>
+        <div class="col order-1">
           <div class="text-center">
             <img
               src="../../img/sale1.jpg"
@@ -21,11 +19,11 @@
               width="290"
               height="220"
             />
-            <h3>Large Meal</h3>
-            <p>7.99€</p>
+            <h3>Sealiha burger - L</h3>
+            <p>X€</p>
           </div>
         </div>
-        <div class="col order-5">
+        <div class="col order-2">
           <div class="text-center">
             <img
               src="../../img/sale3.jpg"
@@ -34,11 +32,11 @@
               width="250"
               height="220"
             />
-            <h3>Vegan Burger</h3>
-            <p>7.99€</p>
+            <h3>Vegan Burger - S</h3>
+            <p>X€</p>
           </div>
         </div>
-        <div class="col order-1">
+        <div class="col order-3">
           <div class="text-center">
             <img
               src="../../img/sale2.jpg"
@@ -47,17 +45,37 @@
               width="250"
               height="220"
             />
-            <h3>Double Cheese Burger</h3>
-            <p>5.99€</p>
+            <h3>Kana burger - M</h3>
+            <p>X€</p>
           </div>
         </div>
-      </div>
-    </div>
-    <section id="boxes">
+        </div>
+        <div class="footer">
       <Footer /> 
-    </section>
+      </div>
   </div>
+</body>
 </template>
+
+<style scoped>
+
+body {
+background-color: #FACFAD;
+}
+
+.banner {
+  width: 1650px;
+  height: 288px;
+  padding: 0px;
+}
+.menu {
+  background-color: #F8BD7F;
+}
+
+.deals {
+  background-color: #F2AA7E;
+}
+</style>
 
 <script>
 // @ is an alias to /src
