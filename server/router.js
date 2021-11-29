@@ -9,13 +9,14 @@ router.get("/get-burgers", async function (request, response) {
 });
 
 
-router.get("/delete-burgers/:id", async function (request, response) {
+router.get("/delete-burger/:id", async function (request, response) {
   await Serv.deleteOne({ _id: request.params.id });
   console.log("Delete burger..");
   response.send({});
 });
 
 router.get("/get-burger/:id", async function (request, response) {
+  console.log(request.params.id); 
   const result = await Serv.findOne({ _id: request.params.id });
   console.log(result);
   response.send(result);
@@ -24,8 +25,7 @@ router.get("/get-burger/:id", async function (request, response) {
 router.patch("/update-burger/:id", async function (request, response){
   await Serv.updateOne(
     { _id: request.params.id },
-    // Muutimise koht siin!
-    { $set: { status: request.body.status } }
+    { $set: { stock: request.body.stock } }
   );
   console.log("updating burger..");
   response.send({});
