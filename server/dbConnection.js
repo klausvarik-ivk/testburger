@@ -9,6 +9,7 @@ const Schema = mongoose.Schema;
 
 const ServSchema = new Schema({
   title: { type: String },
+  category: {type: String},
   price: { type: Number },
   stock: { type: Number },
   img: { type: String },
