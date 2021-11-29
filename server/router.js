@@ -8,10 +8,9 @@ router.get("/get-burgers", async function (request, response) {
   response.send(result);
 });
 
-
 router.get("/delete-burger/:id", async function (request, response) {
   await Serv.deleteOne({ _id: request.params.id });
-  console.log("Delete burger..");
+  console.log("Deleting Product..");
   response.send({});
 });
 
@@ -27,7 +26,7 @@ router.patch("/update-burger/:id", async function (request, response){
     { _id: request.params.id },
     { $set: { stock: request.body.stock } }
   );
-  console.log("updating burger..");
+  console.log("Updating Product..");
   response.send({});
 });
 
@@ -35,7 +34,7 @@ router.post("/add-burgers", async function (request, response) {
   console.log(request.body);
     if (request.body.title) {
     await Serv.create(request.body);
-    console.log("Lisa burger");
+    console.log("Adding Burger...");
   }
   response.send("done");
 }); 
