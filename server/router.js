@@ -38,7 +38,8 @@ router.post("/update-todo/:id", async function (request, response){
 });
 */
 router.post("/add-burgers", async function (request, response) {
-  if (request.body.title) {
+  console.log(request.body);
+    if (request.body.title) {
     await Serv.create(request.body);
     console.log("Lisa burger");
   }
