@@ -1,9 +1,18 @@
 <template>
   <div class="row">
         <div class="col">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#kanalihaburgerid">
+      <a href="#" data-bs-toggle="modal" data-bs-target="#kanalihaburgerid" @click="getBurgers(burger._id)">
         <img class="menu-image" src="../../img/sale2.jpg" />
         <p>Kanaliha burgerid</p>
+        <ul class="list-group mb-3">
+          <li
+            v-for="burgers in BurgersFromServer"
+            :key="burger"
+            class="list-group-item"
+          >
+            {{ burger.title }} {{ burger.price }}
+          </li>
+        </ul>
       </a>
 <!-- Modal -->
 <div class="modal fade" id="kanalihaburgerid" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,6 +139,37 @@
     </div>
     </div>
 </template>
+
+<script>
+import { ref } from "vue";
+import axios from "axios";
+
+export default {
+  name: "burgers",
+  props: {
+    title: String,
+    price: Number,
+  },
+
+setup() {
+    const BurgersFromServer = ref([]);
+
+    async function getBurgers() {
+      const result = await axios.get("/api/get-burgers");
+      BurgersFromServer.value = result.data;
+      console.log(result.data);
+    }
+
+    getBurgers();
+
+return {
+    getBurgers,
+    BurgersFromServer,
+};
+},
+};
+</script>
+
 
 <style scoped>
 .menu-image {
