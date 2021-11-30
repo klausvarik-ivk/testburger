@@ -93,7 +93,7 @@
             :key="burgers"
             class="list-group-item"
           >
-            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
           </li>
         </ul>
               </div>
@@ -115,7 +115,7 @@
     </div>
     <div class="col">
       <a href="#" data-bs-toggle="modal" data-bs-target="#kalaburgerid" @click="getBurgers('Kala')">
-        <img class="menu-image" src="#" alt="" />
+        <img class="menu-image" src="/img/kala150.jpg" alt="" />
         <p>Kala burgerid</p>
       </a>
 
@@ -146,7 +146,7 @@
             :key="burgers"
             class="list-group-item"
           >
-            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
           </li>
         </ul>
               </div>
@@ -199,7 +199,7 @@
             :key="burgers"
             class="list-group-item"
           >
-            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
           </li>
         </ul>
             </div>
@@ -252,7 +252,7 @@
             :key="burgers"
             class="list-group-item"
           >
-            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
           </li>
         </ul>
               </div>
