@@ -5,7 +5,7 @@
       <Navbar />
     </div>
     <div class="row">
-    <img class="banner" src="../../img/ka-burx.jpg" alt="logo" />
+    <img class="banner" src="/img/ka-burx.jpg" alt="logo" />
     </div>
       <div class="row deals">
         <h1 class="font-weight-bold">Selle nädala pakkumised!</h1>
@@ -13,7 +13,7 @@
         <div class="col order-1">
           <div class="text-center">
             <img
-              src="../../img/sale1.jpg"
+              src="/img/sale1.jpg"
               class="rounded"
               alt="sale1"
               width="290"
@@ -26,7 +26,7 @@
         <div class="col order-2">
           <div class="text-center">
             <img
-              src="../../img/sale3.jpg"
+              src="/img/sale3.jpg"
               class="rounded"
               alt="sale3"
               width="250"
@@ -39,7 +39,7 @@
         <div class="col order-3">
           <div class="text-center">
             <img
-              src="../../img/sale2.jpg"
+              src="/img/sale2.jpg"
               class="rounded"
               alt="sale2"
               width="250"

@@ -5,19 +5,12 @@
         href="#"
         data-bs-toggle="modal"
         data-bs-target="#kanalihaburgerid"
-        @click="getBurgers"
+        @click="getBurgers('Kana')"
       >
-        <img class="menu-image" src="../../img/sale2.jpg" @click="getBurgers"/>
+        <!-- <img class="menu-image" src="../../img/sale2.jpg" @click="getBurgers('Kana')"/> -->
+
+        <img class="menu-image" src="/img/sale2.jpg"/>
         <p>Kanaliha burgerid</p>
-        <ul class="list-group mb-3">
-          <li
-            v-for="burgers in BurgersFromServer"
-            :key="burgers"
-            class="list-group-item"
-          >
-            {{ burgers.title }} {{ burgers.price }} {{ burgers.stock }} {{ burgers.img }}
-          </li>
-        </ul>
       </a>
       <!-- Modal -->
       <div
@@ -38,7 +31,18 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">Kanaliha burgerid</div>
+            <div class="modal-body">
+              Kanaliha burgerid
+<ul class="list-group mb-3">
+          <li
+            v-for="burgers in BurgersFromServer"
+            :key="burgers"
+            class="list-group-item"
+          >
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
+          </li>
+        </ul>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -47,7 +51,8 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" @click="getBurgers">
+              <!-- <button type="button" class="btn btn-primary" @click="getBurgers('Kana')"> -->
+                <button type="button" class="btn btn-primary">
                 Save changes
               </button>
             </div>
@@ -56,8 +61,8 @@
       </div>
     </div>
     <div class="col">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#veiselihaburgerid">
-        <img class="menu-image" src="../../img/sale1.jpg" />
+      <a href="#" data-bs-toggle="modal" data-bs-target="#veiselihaburgerid" @click="getBurgers('Veise')">
+        <img class="menu-image" src="/img/sale1.jpg" />
         <p>Veiseliha burgerid</p>
       </a>
 
@@ -80,12 +85,23 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">Veiseliha burgerid</div>
+            <div class="modal-body">
+              Veiseliha burgerid
+              <ul class="list-group mb-3">
+          <li
+            v-for="burgers in BurgersFromServer"
+            :key="burgers"
+            class="list-group-item"
+          >
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+          </li>
+        </ul>
+              </div>
             <div class="modal-footer">
               <button
                 type="button"
                 class="btn btn-secondary"
-                data-bs-dismiss="modal"
+                data-bs-dismiss="modal"              
               >
                 Close
               </button>
@@ -98,7 +114,7 @@
       </div>
     </div>
     <div class="col">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#kalaburgerid">
+      <a href="#" data-bs-toggle="modal" data-bs-target="#kalaburgerid" @click="getBurgers('Kala')">
         <img class="menu-image" src="#" alt="" />
         <p>Kala burgerid</p>
       </a>
@@ -122,7 +138,18 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">Kala burgerid</div>
+            <div class="modal-body">
+              Kala burgerid
+                            <ul class="list-group mb-3">
+          <li
+            v-for="burgers in BurgersFromServer"
+            :key="burgers"
+            class="list-group-item"
+          >
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+          </li>
+        </ul>
+              </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -140,8 +167,8 @@
       </div>
     </div>
     <div class="col">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#veganburgerid">
-        <img class="menu-image" src="../../img/sale3.jpg" alt="" />
+      <a href="#" data-bs-toggle="modal" data-bs-target="#veganburgerid" @click="getBurgers('Vegan')">
+        <img class="menu-image" src="/img/sale3.jpg" alt="" />
         <p>Vegan burgerid</p>
       </a>
 
@@ -164,7 +191,18 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">Vegan burgerid</div>
+            <div class="modal-body">
+              Vegan burgerid
+                            <ul class="list-group mb-3">
+          <li
+            v-for="burgers in BurgersFromServer"
+            :key="burgers"
+            class="list-group-item"
+          >
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+          </li>
+        </ul>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -182,8 +220,8 @@
       </div>
     </div>
     <div class="col">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#sealihaburgerid">
-        <img class="menu-image" src="../../img/sale4.jpg" alt="" />
+      <a href="#" data-bs-toggle="modal" data-bs-target="#sealihaburgerid" @click="getBurgers('Sea')">
+        <img class="menu-image" src="/img/sale4.jpg" alt="" />
         <p>Sealiha burgerid</p>
       </a>
 
@@ -206,7 +244,18 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">Sealiha burgerid</div>
+            <div class="modal-body">
+              Sealiha burgerid
+                                          <ul class="list-group mb-3">
+          <li
+            v-for="burgers in BurgersFromServer"
+            :key="burgers"
+            class="list-group-item"
+          >
+            {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: "{{ burgers.img }}"
+          </li>
+        </ul>
+              </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -241,16 +290,24 @@ export default {
 
   setup() {
     const BurgersFromServer = ref([]);
-
-    async function getBurgers() {
+    async function getBurgers(catburger) {
       const result = await axios.get("/api/get-burgers");
-      BurgersFromServer.value = result.data;
+      BurgersFromServer.value = result.data.filter(result => result.category === catburger);
       console.log(BurgersFromServer);
+    }
+
+      const FeaturedFromServer = ref([]);
+    async function getFeatured() {
+      const result = await axios.get("/api/get-burgers");
+      FeaturedFromServer.value = result.data.filter(result => result.featured === true);
+      console.log(FeaturedFromServer.value)
     }
 
     return {
       getBurgers,
       BurgersFromServer,
+      getFeatured,
+      FeaturedFromServer,
     };
   },
 };
