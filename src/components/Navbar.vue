@@ -40,6 +40,7 @@
             class="list-group-item"
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
+            <button @click="deleteBurger(burgers._id, 'Kana')">Delete</button>
           </li>
         </ul>
             </div>
@@ -94,6 +95,7 @@
             class="list-group-item"
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
+            <button @click="deleteBurger(burgers._id, 'Veise')">Delete</button>
           </li>
         </ul>
               </div>
@@ -147,6 +149,7 @@
             class="list-group-item"
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
+            <button @click="deleteBurger(burgers._id, 'Kala')">Delete</button>
           </li>
         </ul>
               </div>
@@ -200,6 +203,7 @@
             class="list-group-item"
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
+            <button @click="deleteBurger(burgers._id, 'Vegan')">Delete</button>
           </li>
         </ul>
             </div>
@@ -253,6 +257,7 @@
             class="list-group-item"
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
+            <button @click="deleteBurger(burgers._id, 'Sea')">Delete</button>
           </li>
         </ul>
               </div>
@@ -303,11 +308,16 @@ export default {
       console.log(FeaturedFromServer.value)
     }
 
+    async function deleteBurger(id, catburger) {
+      await axios.get("/api/delete-burger/" + id);
+      getBurgers(catburger);
+    }
     return {
       getBurgers,
       BurgersFromServer,
       getFeatured,
       FeaturedFromServer,
+      deleteBurger,
     };
   },
 };
