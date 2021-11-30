@@ -15,7 +15,7 @@
             :key="burgers"
             class="list-group-item"
           >
-            {{ burger.title }} {{ burger.price }}
+            {{ burgers.title }} {{ burgers.price }} {{ burgers.stock }} {{ burgers.img }}
           </li>
         </ul>
       </a>
@@ -235,6 +235,8 @@ export default {
   props: {
     title: String,
     price: Number,
+    stock: String,
+    img: String,
   },
 
   setup() {
