@@ -21,6 +21,12 @@ const routes = [
     name: "Kontaktid",
     component: () =>
       import("../views/Contacts.vue"),
+  },
+  {
+    path: "/Login",
+    name: "Login",
+    component: () =>
+    import("../views/Login.vue"),
   }
 ];
 
