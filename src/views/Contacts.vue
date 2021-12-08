@@ -1,5 +1,17 @@
 <template>
-  <div class="hello">
+<body>
+  <div class="container">
+    <div class="row menu">
+      <Navbar />
+    </div>
+    <div class="row">
+    <img class="banner" src="/img/ka-burx.jpg" alt="logo" />
+    </div>
+</div>
+<div class="container">
+  <div class="row contacts">
+    <div class="col">
+  <h1 class="font-weight-bold">Kontaktid</h1>
     <div class="address">
       <h2>Aadress: Aadress 123, Viljandi</h2>
     </div>
@@ -20,13 +32,47 @@
       </div>
     </div>
   </div> 
+  </div>
+  <div class="footer">
+      <Footer /> 
+       </div>
+      </div>
+  </body>
 </template>
 
 <script>
+
+import Footer from "@/components/Footer.vue";
+import Navbar from "@/components/Navbar.vue";
+
+export default {
+
+  name: "Contacts",
+  components: {
+    Footer, 
+    Navbar,
+  },
+};
 
 </script>
 
 
 <style scoped>
+.menu {
+  background-color: #F8BD7F;
+}
 
+body {
+background-color: #FACFAD;
+}
+
+.contacts {
+  background-color: #F2AA7E;
+}
+
+.banner {
+  width: 1650px;
+  height: 288px;
+  padding: 0px;
+}
 </style>
