@@ -8,12 +8,19 @@
     <div class="text-center">
       <h3>Külastage meid jälle!</h3>
     </div>
-  </div>
-  </div>
-  </div>
+</div>
+<div class="link">
+<a href="http://localhost:8080/contacts" style="color:black">Kontaktid</a>
+</div>
+
+</div>
+</div>
 </template>
 
-<script></script>
+<script>
+
+
+</script>
 
 <style scoped>
 .footer {
