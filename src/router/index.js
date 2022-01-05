@@ -19,15 +19,18 @@ const routes = [
   {
     path: "/contacts",
     name: "Kontaktid",
-    component: () =>
-      import("../views/Contacts.vue"),
+    component: () => import("../views/Contacts.vue"),
   },
   {
     path: "/Login",
     name: "Login",
-    component: () =>
-    import("../views/Login.vue"),
-  }
+    component: () => import("../views/Login.vue"),
+  },
+  {
+    path: "/Register",
+    name: "Register",
+    component: () => import("../views/Register.vue"),
+  },
 ];
 
 const router = createRouter({
