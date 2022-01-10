@@ -2,8 +2,8 @@
   <div id="app">
     <form @submit.prevent="login">
       <div>
-        <label for="Username">Username</label>
-        <input name="Username" v-model="Username" placeholder="Username" />
+        <label for="Username">Email</label>
+        <input name="Username" v-model="email" placeholder="examble@examble.eu" />
       </div>
       <div>
         <label for="password">Password</label>
@@ -22,10 +22,6 @@
         <label for="lastName">Last name</label>
         <input name="lastName" v-model="LastName" placeholder="last name" />
       </div>
-      <div>
-        <label for="address">Address</label>
-        <input name="address" v-model="Address" placeholder="address" />
-      </div>
       <input type="submit" value="Register" />
     </form>
   </div>
@@ -35,30 +31,27 @@ export default {
   name: "App",
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
       firstName: "",
       lastName: "",
-      address: "",
     };
   },
   methods: {
     async login() {
-      const { username, password, firstName, lastName, age, address } = this;
+      const { email, password, firstName, lastName } = this;
       const res = await fetch(
-        "https://SomberHandsomePhysics--five-nine.repl.co/register",
+        "/api/register",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username,
+            email,
             password,
             firstName,
             lastName,
-            age,
-            address,
           }),
         }
       );

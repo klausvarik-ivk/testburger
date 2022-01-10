@@ -60,7 +60,7 @@ export default defineComponent({
     let email = ref("");
     let password = ref("");
     async function login() {
-      const { data } = await axios.post("/api/auth/login", {
+      const { data } = await axios.post("/api/login", {
         email: email.value,
         password: password.value,
       });
