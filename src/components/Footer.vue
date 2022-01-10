@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="link">
-<a href="http://localhost:8080/contacts" style="color:black">Kontaktid</a>
+<a href="/contacts" style="color:black">Kontaktid</a>
 </div>
 
 </div>

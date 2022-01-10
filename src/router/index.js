@@ -19,17 +19,20 @@ const routes = [
   {
     path: "/contacts",
     name: "Kontaktid",
-    component: () => import("../views/Contacts.vue"),
+    component: () => 
+      import(/* webpackChunkName: "about" */ "../views/Contacts.vue"),
   },
   {
     path: "/Login",
     name: "Login",
-    component: () => import("../views/Login.vue"),
+    component: () => 
+      import(/* webpackChunkName: "about" */ "../views/Login.vue"),
   },
   {
     path: "/Register",
     name: "Register",
-    component: () => import("../views/Register.vue"),
+    component: () => 
+      import(/* webpackChunkName: "about" */ "../views/Register.vue"),
   },
 ];
 
