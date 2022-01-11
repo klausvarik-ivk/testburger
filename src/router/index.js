@@ -39,7 +39,14 @@ const routes = [
     name: "Admin",
     component: () =>
     import("../views/Admin.vue"),
-  }
+  },
+  {
+    path: "/updateburger",
+    name: "updateBurger",
+    component: () =>
+    import("../views/updateBurger.vue"),
+  },
+  
 ];
 
 const router = createRouter({
