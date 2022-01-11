@@ -1,4 +1,8 @@
 <template>
+
+<div>
+<a href="/updateBurger">Uuenda burgereid</a>
+</div>
     <div class="d-flex justify-content-center">
         <div class="col-6">
            
@@ -57,22 +61,5 @@
 </style>
 
 <script>
-import axios from "axios";
-export default {
-    name: "Admin",
-    data() {
-        return {
-            selectedFile: null
-        }
-    },
-    methods: {
-        onFileSelected(event) {
-            this.selectedFile = event.target.files[0]
-        },
-        onUpload() {
-            axios.post("")
-        }
-    }
-}
 
 </script>
