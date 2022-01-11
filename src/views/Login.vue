@@ -8,9 +8,9 @@
         <div class="card p-3">
           <h3>Login</h3>
           <!-- HINT -->
-          <br>
+          <br />
           <p>test@test.ee</p>
-          <p>password</p>
+          <p>SeeOnPassword123</p>
           <!-- HINT -->
           <div class="card-body">
             <div class="form-group">
