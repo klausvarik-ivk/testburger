@@ -38,13 +38,13 @@ const routes = [
     path: "/Admin",
     name: "Admin",
     component: () =>
-    import("../views/Admin.vue"),
+    import(/* webpackChunkName: "about" */ "../views/Admin.vue"),
   },
   {
     path: "/updateburger",
     name: "updateBurger",
     component: () =>
-    import("../views/updateBurger.vue"),
+    import(/* webpackChunkName: "about" */ "../views/updateBurger.vue"),
   },
   
 ];
