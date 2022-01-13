@@ -31,7 +31,7 @@
     <div class="d-flex justify-content-center">
         <div class="col-6">
          <label for="img">Pilt</label>
-                <input name="img" @change="onFileSelected"> 
+                <input name="img" v-model="Img" @change="onFileSelected"> 
             <button @click="onUpload"> Lae üles</button>
              
         </div>
@@ -39,7 +39,7 @@
     <div class="d-flex justify-content-center">
         <div class="col-6">
              <label for="Featured">Featured</label>
-        <input name="Featured" v-model="Stock" placeholder="Featured" />
+        <input name="Featured" v-model="Featured" placeholder="Featured" />
         <div class="col-6">
             <button type="button" @click="addBurger" class="btn btn-primary">
                 Lisa burger
@@ -57,36 +57,40 @@
 </style>
 
 <script>
-// import { defineComponent } from "vue"
-// import { ref } from "vue";
-// import axios from "axios";
+import { defineComponent } from "vue"
+import { ref } from "vue";
+import axios from "axios";
 
-//export default defineComponent({
-   // setup() {
-  // const burgers = ref("");
-  // const newBurger = ref("");
+export default defineComponent({
+    setup() {
+  const Title = ref("");
+  const Category = ref("");
+  const Price = ref("");
+  const Stock = ref("");
+  const Img = ref("");
+  const Featured = ref("");
 
- //  async function addBurger() {
-  //      const { data } = await axios.post("/api/admin", {
-   //         title: title.value,
-  //          category: category.value,
-  //          price: price.value,
- //           stock: stock.value,
-  //          img: img.value,
- //           featured: featured.value,
-  //   });
-  //   }
-  //   return {
- //     title,
-  //    category,
-   //   price,
-  //    stock,
-   //   img,
-   //   featured,
- //     addBurger,
-
- //   };
- //   }
-// })
-// 
+ async function addBurger() {
+       const { data } = await axios.post("/api/admin", {
+            title: Title.value,
+            category: Category.value,
+            price: Price.value,
+            stock: Stock.value,
+            img: Img.value,
+            featured: Featured.value,
+    });
+   }
+    return {
+        title,
+        category,
+        price,
+        stock,
+        img,
+        featured,
+        addBurger,
+      
+   };
+   }
+ })
+ 
 </script>
