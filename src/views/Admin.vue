@@ -63,15 +63,22 @@ import axios from "axios";
 
 export default defineComponent({
     setup() {
-  const Title = ref("");
-  const Category = ref("");
-  const Price = ref("");
-  const Stock = ref("");
-  const Img = ref("");
-  const Featured = ref("");
+  const title = ref("");
+  const category = ref("");
+  const price = ref("");
+  const stock = ref("");
+  const img = ref("");
+  const featured = ref("");
+
+  let Title = ref("");
+  let Category =("");
+  let Price = ref("");
+  let Stock = ref("");
+  let Img = ref("");
+  let Featured = ref("");
 
  async function addBurger() {
-       const { data } = await axios.post("/api/admin", {
+       const { data } = await axios.post("/api/add-burgers", {
             title: Title.value,
             category: Category.value,
             price: Price.value,
