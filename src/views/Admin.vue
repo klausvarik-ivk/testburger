@@ -6,40 +6,38 @@
     <div class="d-flex justify-content-center">
         <div class="col-6">
            <label for="Title">Burgeri nimi</label>
-        <input name="Title" v-model="Title" placeholder="Burgeri nimi" />
+        <input name="Title" v-model="title" placeholder="Nt: Kanaburger S" />
            
         </div>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-6">
             <label for="Category">Kategooria</label>
-        <input name="Category" v-model="Category" placeholder="Kategooria" />
+        <input name="Category" v-model="category" placeholder="Nt: Kana, Kala jne" />
         </div>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-6">
             <label for="Price">Hind</label>
-        <input name="Price" v-model="Price" placeholder="Hind" />
+        <input name="Price" v-model="price" placeholder="Nt: 5.2" />
         </div>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-6">
            <label for="Stock">Laoseis</label>
-        <input name="Stock" v-model="Stock" placeholder="Laoseis" />
+        <input name="Stock" v-model="stock" placeholder="Nt: 1" />
         </div>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-6">
          <label for="img">Pilt</label>
-                <input name="img" v-model="Img" @change="onFileSelected"> 
-            <button @click="onUpload"> Lae üles</button>
-             
+                <input name="img" v-model="img" placeholder="Nt: ../../img/pilt1.jpg"> 
         </div>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-6">
              <label for="Featured">Featured</label>
-        <input name="Featured" v-model="Featured" placeholder="Featured" />
+        <input name="Featured" v-model="featured" placeholder="Nt: false, true" />
         <div class="col-6">
             <button type="button" @click="addBurger" class="btn btn-primary">
                 Lisa burger
@@ -57,47 +55,42 @@
 </style>
 
 <script>
-import { defineComponent } from "vue"
-import { ref } from "vue";
-import axios from "axios";
-
-export default defineComponent({
-    setup() {
-  const title = ref("");
-  const category = ref("");
-  const price = ref("");
-  const stock = ref("");
-  const img = ref("");
-  const featured = ref("");
-
-  let Title = ref("");
-  let Category =("");
-  let Price = ref("");
-  let Stock = ref("");
-  let Img = ref("");
-  let Featured = ref("");
-
- async function addBurger() {
-       const { data } = await axios.post("/api/add-burgers", {
-            title: Title.value,
-            category: Category.value,
-            price: Price.value,
-            stock: Stock.value,
-            img: Img.value,
-            featured: Featured.value,
-    });
-   }
+export default {
+  name: "addBurger",
+  data() {
     return {
-        title,
-        category,
-        price,
-        stock,
-        img,
-        featured,
-        addBurger,
-      
-   };
-   }
- })
- 
+      title: "",
+      category: "",
+      price: "",
+      stock: "",
+      img: "",
+      featured: "",
+
+    };
+  },
+  methods: {
+    async addBurger() {
+      const { title, category, price, stock, img, featured } = this;
+      const res = await fetch(
+        "/api/add-burgers",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              title,
+            category,
+            price,
+            stock,
+            img,
+            featured,
+          }),
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+    },
+  },
+};
 </script>
