@@ -1,6 +1,6 @@
 <template>
 
-<div>
+<div class="up">
 <a href="/updateBurger">Uuenda burgereid</a>
 </div>
     <div class="d-flex justify-content-center">
@@ -38,7 +38,7 @@
         <div class="col-6">
              <label for="Featured">Featured</label>
         <input name="Featured" v-model="featured" placeholder="Nt: false, true" />
-        <div class="col-6">
+        <div class="add">
             <button type="button" @click="addBurger" class="btn btn-primary">
                 Lisa burger
               </button>
@@ -50,7 +50,14 @@
 <style scoped>
 
 .centered-input input {
-  text-align: center
+  text-align: center;
+}
+.up {
+    padding: 50px;
+}
+.add {
+    text-align:center;
+    padding:50px;
 }
 </style>
 
