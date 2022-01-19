@@ -409,9 +409,37 @@ setup() {
     }
 
 
-      async function updateBurger(id, catburger) {
-      await axios.patch("/api/update-burger/" + id);
-      updateBurger(catburger);
+      async function updateBurger(
+      id,
+      title,
+      category,
+      price,
+      stock,
+      img,
+      featured
+    ) {
+      console.log(id);
+      await axios.patch(
+        "/api/update-burger/:id" + id,
+        {
+          title: title,
+        },
+        {
+          category: category,
+        },
+        {
+          price: price,
+        },
+        {
+          stock: stock,
+        },
+        {
+          img: img,
+        },
+        {
+          featured: featured,
+        }
+      );
     }
 
     return {
