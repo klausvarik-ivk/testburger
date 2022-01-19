@@ -65,7 +65,12 @@ router.get("/get-burger/:id", async function (request, response) {
 router.patch("/update-burger/:id", async function (request, response){
   await Products.updateOne(
     { _id: request.params.id },
-    { $set: { stock: request.body.stock } }
+    {$set: { title: request.body.title } },
+    {$set:{ category: request.body.category }},
+    {$set: { price: request.body.price }},
+    {$set: { stock: request.body.stock }},
+    {$set: { img: request.body.img }},
+    {$set: { featured: request.body.featured }}
   );
   console.log("Updating Product..");
   response.send({});
