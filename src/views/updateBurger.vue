@@ -135,7 +135,7 @@
            <label for="Featured">Featured</label>
         <input name="Featured" v-model="burgers.featured" /> 
       </div>
-            <button @click="updateBurger(burgers._id, 'Kana')">Update</button>
+            <button @click="updateBurger(burgers._id, burgers.title, burgers.category, burgers.price, burgers.stock, burgers.img, burgers.featured)">Update</button>
           </li>
         </ul>
             </div>
