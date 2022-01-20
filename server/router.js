@@ -56,21 +56,25 @@ router.get("/delete-burger/:id", async function (request, response) {
 });
 
 router.get("/get-burger/:id", async function (request, response) {
-  console.log(request.params.id); 
+  console.log(request.params.id);
   const result = await Products.findOne({ _id: request.params.id });
   console.log(result);
   response.send(result);
 });
 
-router.patch("/update-burger/:id", async function (request, response){
+router.patch("/update-burger/:id", async function (request, response) {
   await Products.updateOne(
     { _id: request.params.id },
-    {$set: { title: request.body.title } },
-    {$set:{ category: request.body.category }},
-    {$set: { price: request.body.price }},
-    {$set: { stock: request.body.stock }},
-    {$set: { img: request.body.img }},
-    {$set: { featured: request.body.featured }}
+    {
+      $set: {
+        title: request.body.title,
+        category: request.body.category,
+        price: request.body.price,
+        stock: request.body.stock,
+        img: request.body.img,
+        featured: request.body.featured,
+      },
+    }
   );
   console.log("Updating Product..");
   response.send({});
@@ -78,13 +82,11 @@ router.patch("/update-burger/:id", async function (request, response){
 
 router.post("/add-burgers", async function (request, response) {
   console.log(request.body);
-    if (request.body.title) {
+  if (request.body.title) {
     await Products.create(request.body);
     console.log("Adding Burger...");
   }
   response.send("done");
-}); 
-
-
+});
 
 module.exports = router;
