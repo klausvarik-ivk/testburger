@@ -3,6 +3,7 @@
   <div class="container">
     <div class="row menu">
       <Navbar />
+      
     </div>
     <div class="row">
     <img class="banner" src="/img/ka-burx.jpg" alt="logo" />

@@ -1,6 +1,7 @@
 <template>
   <div class="row">
     <div class="col">
+      
       <a
         href="#"
         data-bs-toggle="modal"
@@ -41,6 +42,7 @@
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
             <button @click="deleteBurger(burgers._id, 'Kana')">Delete</button>
+            <button @click="addToCart(burgers._id, burgers.title, burgers.price)">Add to Cart</button>
           </li>
         </ul>
             </div>
@@ -96,6 +98,7 @@
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
             <button @click="deleteBurger(burgers._id, 'Veise')">Delete</button>
+            <button @click="addToCart(burgers._id, burgers.title, burgers.price)">Add to Cart</button>
           </li>
         </ul>
               </div>
@@ -150,6 +153,7 @@
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
             <button @click="deleteBurger(burgers._id, 'Kala')">Delete</button>
+            <button @click="addToCart(burgers._id, burgers.title, burgers.price)">Add to Cart</button>
           </li>
         </ul>
               </div>
@@ -204,6 +208,7 @@
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
             <button @click="deleteBurger(burgers._id, 'Vegan')">Delete</button>
+            <button @click="addToCart(burgers._id, burgers.title, burgers.price)">Add to Cart</button>
           </li>
         </ul>
             </div>
@@ -258,6 +263,7 @@
           >
             {{ burgers.title }} {{ burgers.price }}€ {{ burgers.stock }} in stock image url: <img :src=" burgers.img  " />
             <button @click="deleteBurger(burgers._id, 'Sea')">Delete</button>
+            <button @click="addToCart(burgers._id, burgers.title, burgers.price)">Add to Cart</button>
           </li>
         </ul>
               </div>
@@ -269,57 +275,144 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
+            
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+    <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingcart">
+        <p>Shopping Cart</p>
+      </a>
+        <div
+        class="modal fade"
+        id="shoppingcart"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Shopping Cart</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Shopping Cart
+              <ul class="list-group mb-3">
+                <li
+                    v-for="items in shoppingList"
+                    :key="items"
+                    class="list-group-item"
+                >
+                {{ items.title }}, Price: {{items.price}}, In Cart: {{items.ammount}}
+                <button @click="deleteItemFromCart(item._id)">Delete</button>
+          </li>
+            </ul>
+              </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
 import { ref } from "vue";
 import axios from "axios";
 
+
+
+
 export default {
-  name: "burgers",
-  props: {
-    title: String,
-    price: Number,
-    stock: String,
-    img: String,
-  },
-
-  setup() {
-    const BurgersFromServer = ref([]);
-    async function getBurgers(catburger) {
-      const result = await axios.get("/api/get-burgers");
-      BurgersFromServer.value = result.data.filter(result => result.category === catburger);
-      console.log(BurgersFromServer);
-    }
-
-      const FeaturedFromServer = ref([]);
-    async function getFeatured() {
-      const result = await axios.get("/api/get-burgers");
-      FeaturedFromServer.value = result.data.filter(result => result.featured === true);
-      console.log(FeaturedFromServer.value)
-    }
-
-    async function deleteBurger(id, catburger) {
-      await axios.get("/api/delete-burger/" + id);
-      getBurgers(catburger);
-    }
-    return {
-      getBurgers,
-      BurgersFromServer,
-      getFeatured,
-      FeaturedFromServer,
-      deleteBurger,
-    };
-  },
+    name: "burgers", 
+    props: {
+        id: String,
+        title: String,
+        price: Number,
+        stock: Number,
+        img: String,
+        ammount: Number,
+    },
+    setup() {
+        const BurgersFromServer = ref([]);
+        const shoppingList = ref([]);
+        async function getBurgers(catburger) {
+            const result = await axios.get("/api/get-burgers");
+            BurgersFromServer.value = result.data.filter(result => result.category === catburger);
+            console.log(BurgersFromServer);
+        }
+        const FeaturedFromServer = ref([]);
+        async function getFeatured() {
+            const result = await axios.get("/api/get-burgers");
+            FeaturedFromServer.value = result.data.filter(result => result.featured === true);
+            console.log(FeaturedFromServer.value);
+        }
+        async function deleteBurger(id, catburger) {
+            await axios.get("/api/delete-burger/" + id);
+            getBurgers(catburger);
+        }
+        async function addToCart(id, name, price) {
+            let incart = 1
+            const data = {id: id, title: name, price: price, ammount: incart}
+            console.log(shoppingList.value.some(item =>item.id === id))
+            
+            if(shoppingList.value.some(item =>item.id === id)){
+              const index = shoppingList.value.findIndex(item => item.id === id)
+              console.log(shoppingList.value[index].ammount)
+              let add = shoppingList.value[index].ammount + 1
+              const newItem = {
+                ...shoppingList.value[index],
+                ammount: add
+              }
+              const newArray = [
+                ...shoppingList.value.slice(0, index),
+                newItem,
+                ...shoppingList.value.slice(index)
+              ]
+              console.log(newArray);
+              //shoppingList.value.push(id, name, " Price: ", price, " in Cart:", incart);
+              //uuenda et incart +1
+            }
+            else{
+              shoppingList.value.push(data);
+            } 
+            console.log(shoppingList.value)
+        
+        }
+        function deleteItemFromCart(id){
+          console.log(id);
+        }
+        return {
+            getBurgers,
+            BurgersFromServer,
+            getFeatured,
+            FeaturedFromServer,
+            deleteBurger,
+            addToCart,
+            shoppingList,
+            deleteItemFromCart,
+            
+        };
+    },
 };
 </script>
 
